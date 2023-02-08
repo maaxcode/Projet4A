@@ -6,29 +6,18 @@ class Lumiere{
         this.nom = nom;
     }
     
-    On(valeur_souhaitée){ 
-        if(this.lumiereOn!=valeur_souhaitée)
-        {
-            if(valeur_souhaitée==1)
-            {
+    On(){  
                 this.lumiereOn = true;
-                console.log(this.lumiereOn);}}}
+                console.log(this.lumiereOn);}
 
           
 
-    Off(valeur_souhaitée)
+    Off()
     {
-        if(this.lumiereOn!=valeur_souhaitée)
-        {
-            if(valeur_souhaitée==0)
-            {
                 this.lumiereOn = false;
                 console.log(this.lumiereOn);}
-            else
-        {
-            console.log('La valeur pour eteindre la lumiere doit etre 0')
-        }}}
 
 }
 
+module.exports = Lumiere;
 

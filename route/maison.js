@@ -1,4 +1,4 @@
-
+/*
 EntréeTemp = 0;
 SortieTemp = 0;
 EntréeLum = 0 ;
@@ -6,15 +6,25 @@ SortieLum = 0;
 EntréeVolet = 0 ;
 SortieVolet = 0;
 LumiereOn = 0 ;
-Ouverturevolet = 0
+Ouverturevolet = 0*/
 
 const express = require('express');
 const routeur= express.Router();
+const Temp = require('../Capteurs/Temperature.js')
+const Lum = require('../Capteurs/Lumiere.js')
+const Volet = require('../Capteurs/Volet.js');
+const Lumiere = require('../Capteurs/Lumiere.js');
+const Temperature = require('../Capteurs/Temperature.js');
+
+var tempsalon = new Temp(10,"salon");
+var voletsalon = new Volet(0,"salon");
+var lumsalon = new Lumiere(false,"salon");
+
 routeur.use('/test',(req, res) => {
     res.json({ message: 'Votre requête a bien été reçue !' }); 
  });
     //Get Entré lumiere, volet et temperature 
-
+/*
     routeur.get('/getentreetemp',(req, res) => {
         res.status(200).json({EntréeTemp});
      });
@@ -25,7 +35,7 @@ routeur.use('/test',(req, res) => {
      routeur.get('/getentreevolet',(req, res) => {
         res.status(200).json({EntréeVolet});
      });
-
+*/ 
     //Get sortie lumiere volet et temp
 
  routeur.get('/getsortietemp',(req, res) => {
@@ -43,7 +53,7 @@ routeur.use('/test',(req, res) => {
 
  routeur.get('/setentreetemp:value',(req, res) => {
 
-    if (req.params.value <= 25 && req.params.value >= 15)
+   /* if (req.params.value <= 25 && req.params.value >= 15)
     {
         console.log("Dans le set temp");
         EntréeTemp = req.params.value;
@@ -59,13 +69,18 @@ routeur.use('/test',(req, res) => {
             }
         }
         res.status(200).json({SortieTemp});
-    }else 
-    res.status(201).json({message : "Valeur incorrecte, entrez une valeur comprise entre 15 et 25 "});
+    }else */
+       
+        tempsalon.GO(req.params.value);
+        temperature=tempsalon.ValueTemp;
+        res.status(200).json({temperature});
+
+    //res.status(201).json({message : "Valeur incorrecte, entrez une valeur comprise entre 15 et 25 "});
     
  });
 
  routeur.get('/setentreevolet:value',(req, res) => {
-
+/*
     if (req.params.value == 0 || req.params.value == 1 )
     {
         console.log("Dans le set volet");
@@ -92,12 +107,18 @@ routeur.use('/test',(req, res) => {
         }
         res.status(200).json({Ouverturevolet});
     }else 
-    res.status(201).json({message : 'Valeur incorrecte, entrez une valeur 0 ou 1'});
+    res.status(201).json({message : 'Valeur incorrecte, entrez une valeur 0 ou 1'});*/
+
+  
+    if (req.params.value == 1){voletsalon.Ouvrir();}
+    if (req.params.value == 0){voletsalon.Fermer();}
+    ouverture = voletsalon.Ouverture;
+    res.status(200).json({ouverture});
     
  });
 
  routeur.get('/setentreelum:value',(req, res) => {
-
+/*
     if (req.params.value == 1 || req.params.value == 0)
     {
         console.log("Dans le set lum");
@@ -116,8 +137,15 @@ routeur.use('/test',(req, res) => {
         }
         res.status(200).json({LumiereOn});
     }else 
-    res.status(201).json({message : 'Valeur incorrecte, entrez une valeur 0 ou 1'});
+    res.status(201).json({message : 'Valeur incorrecte, entrez une valeur 0 ou 1'});*/
+
+
+    if (req.params.value == 1){lumsalon.On();}
+    if (req.params.value == 0){lumsalon.Off();}
+    lumiere = lumsalon.lumiereOn;
+    res.status(200).json({lumiere});
     
  });
+
 
  module.exports = routeur;
