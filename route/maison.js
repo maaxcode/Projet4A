@@ -10,8 +10,6 @@ Ouverturevolet = 0*/
 
 const express = require('express');
 const routeur= express.Router();
-const Temp = require('../Capteurs/Temperature.js')
-const Lum = require('../Capteurs/Lumiere.js')
 const Volet = require('../Capteurs/Volet.js');
 const Lumiere = require('../Capteurs/Lumiere.js');
 const Temperature = require('../Capteurs/Temperature.js');
