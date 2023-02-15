@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/maaxcode/Projet4A#readme",
   "dependencies": {
+    "discord.js": "^14.7.1",
     "express": "^4.18.2"
   }
 }
