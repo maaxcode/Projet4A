@@ -14,7 +14,7 @@ const Volet = require('../Capteurs/Volet.js');
 const Lumiere = require('../Capteurs/Lumiere.js');
 const Temperature = require('../Capteurs/Temperature.js');
 
-var tempsalon = new Temp(10,"salon");
+var tempsalon = new Temperature(10,"salon");
 var voletsalon = new Volet(0,"salon");
 var lumsalon = new Lumiere(false,"salon");
 
