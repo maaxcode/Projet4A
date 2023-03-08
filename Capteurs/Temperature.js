@@ -10,7 +10,6 @@ class Temperature{
 
         if (valeur_souhaitée <= 25 && valeur_souhaitée >= 15)
         {
-            console.log("Dans le set temp");
             while (valeur_souhaitée!=this.ValueTemp)
             {
                 if (valeur_souhaitée>this.ValueTemp)

@@ -13,13 +13,17 @@ const routeur= express.Router();
 const Volet = require('../Capteurs/Volet.js');
 const Lumiere = require('../Capteurs/Lumiere.js');
 const Temperature = require('../Capteurs/Temperature.js');
+const Simulation_Maison = require('../Capteurs/Simulation_Maison.js')
 
 var tempsalon = new Temperature(10,"salon");
 var voletsalon = new Volet(0,"salon");
 var lumsalon = new Lumiere(false,"salon");
 
+
 routeur.use('/test',(req, res) => {
     res.json({ message: 'Votre requête a bien été reçue !' }); 
+    console.log("Dans l'api Test ");
+
  });
     //Get Entré lumiere, volet et temperature 
 /*
@@ -37,14 +41,22 @@ routeur.use('/test',(req, res) => {
     //Get sortie lumiere volet et temp
 
  routeur.get('/getsortietemp',(req, res) => {
-    res.status(200).json({SortieTemp,});
+    retour = tempsalon.ValueTemp;
+    tmp = Simulation_Maison.getInstance().gettemp();
+    console.log("avant tmp");
+    console.log(tmp);
+    console.log("apres tmp");
+    res.status(200).json({retour});
  });
  routeur.get('/getsortielum',(req, res) => {
-    res.status(200).json({SortieLum});
+    retour = lumsalon.lumiereOn;
+    res.status(200).json({retour});
+    
  });
 
  routeur.get('/getsortievolet',(req, res) => {
-    res.status(200).json({ouve});
+    retour = voletsalon.Ouverture;
+    res.status(200).json({retour});
  });
 
 //Set entree lumiere temp et volet
@@ -68,10 +80,13 @@ routeur.use('/test',(req, res) => {
         }
         res.status(200).json({SortieTemp});
     }else */
+    Simulation_Maison.getInstance().settemp(req.params.value);
        
-        tempsalon.GO(req.params.value);
-        temperature=tempsalon.ValueTemp;
-        res.status(200).json({temperature});
+     /*   tempsalon.GO(req.params.value);
+        temperature=tempsalon.ValueTemp;*/
+        res.status(200).json({message : "good"});
+
+    
 
     //res.status(201).json({message : "Valeur incorrecte, entrez une valeur comprise entre 15 et 25 "});
     

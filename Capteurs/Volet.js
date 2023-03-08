@@ -11,7 +11,7 @@ class Volet{
                 while(this.Ouverture<0.9)
                 {
                 this.Ouverture= this.Ouverture+0.1;
-                console.log(this.Ouverture);}
+                console.log("Ouverture:" + this.Ouverture);}
             }
         
     Fermer()
@@ -19,7 +19,7 @@ class Volet{
         while(this.Ouverture>0.1)
         {
         this.Ouverture = this.Ouverture-0.1;
-        console.log(this.Ouverture);
+        console.log("Ouverture:" + this.Ouverture);
         }}
 
 }
