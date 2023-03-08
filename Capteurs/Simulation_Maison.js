@@ -19,16 +19,20 @@ var Simulation_Maison = (function() {
 		}
 
 		this.getlum= function() {
-			console.log( lumsalon.lumiereOn)
+			console.log( "getlum_simu_maison : "+lumsalon.lumiereOn)
 			return lumsalon.lumiereOn;
 		}
 
-		this.setlum= function(value) {
+		this.setlum=  function(value) {
+			//return 0 tout est ok, 1 deja allumé, 2 deja eteint
 			console.log("Dans le set lum de la simu maison");
-			if (value == 1){lumsalon.On();}
-			if (value == 0){lumsalon.Off();}
+			if (value == 1){
+				lumsalon.On();}
+
+			if (value == 0){lumsalon.Off();}}
+
 		
-		}
+		
 
 		this.getvolet= function() {
 			console.log( voletsalon.Ouverture)

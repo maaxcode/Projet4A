@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const routeur= express.Router();
 const Simulation_Maison = require('../Capteurs/Simulation_Maison.js')
@@ -48,7 +46,6 @@ routeur.use('/test',(req, res) => {
 
  routeur.get('/setentreevolet:value',(req, res) => {
 
-   // res.status(201).json({message : 'Valeur incorrecte, entrez une valeur 0 ou 1'});
     if(req.params.value == 0)
     {
         Simulation_Maison.getInstance().setvolet(req.params.value);

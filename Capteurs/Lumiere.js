@@ -8,14 +8,14 @@ class Lumiere{
     
     On(){  
                 this.lumiereOn = true;
-                console.log(this.lumiereOn);}
+                console.log("lumiere:"+this.lumiereOn);}
 
           
 
     Off()
     {
                 this.lumiereOn = false;
-                console.log(this.lumiereOn);}
+                console.log("lumiere:" +this.lumiereOn);}
 
 }
 
