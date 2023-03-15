@@ -4,23 +4,8 @@ class Volet{
     constructor(Ouverture,nom){
         this.Ouverture = Ouverture;
         this.nom = nom;
+        this.commande = 0
     }
-    
-    Ouvrir(){ 
-
-                while(this.Ouverture<0.9)
-                {
-                this.Ouverture= this.Ouverture+0.1;
-                console.log("Ouverture:" + this.Ouverture);}
-            }
-        
-    Fermer()
-    {
-        while(this.Ouverture>0.1)
-        {
-        this.Ouverture = this.Ouverture-0.1;
-        console.log("Ouverture:" + this.Ouverture);
-        }}
 
 }
 

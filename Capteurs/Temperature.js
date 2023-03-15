@@ -4,35 +4,11 @@ class Temperature{
     constructor(ValueTemp,nom){
         this.ValueTemp = ValueTemp;
         this.nom = nom;
-    }
-    
-    async GO(valeur_souhaitée){ 
-
-        if (valeur_souhaitée <= 25 && valeur_souhaitée >= 15)
-        {
-            while (valeur_souhaitée!=this.ValueTemp)
-            {
-                if (valeur_souhaitée>this.ValueTemp)
-                {
-                    await resolveAfter2Seconds()
-                    this.ValueTemp=this.ValueTemp+1;
-                    console.log(this.ValueTemp);
-                }else{
-                    await resolveAfter2Seconds()
-                    this.ValueTemp=this.ValueTemp-1;
-                    console.log(this.ValueTemp);
-                }
-            }
-        }else 
-        console.log("Valeur incorrecte, entrez une valeur comprise entre 15 et 25 ");
+        this.Value_com = 20
     }
 
 }
 
-function resolveAfter2Seconds() {
-      setTimeout(() => {
-      }, 10000);
-    };
   
 
 
