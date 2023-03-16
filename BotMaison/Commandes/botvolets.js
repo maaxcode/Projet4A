@@ -6,7 +6,7 @@ module.exports = {
     category: "Contrôle Maison",
     description: "Controle des volets",
 
-    async run(message, valeur) {
+    /*async run(message, valeur) {
         Simulation_Maison.getInstance().setvolet(valeur);
         if(valeur==1){
             await message.reply(`Volet : Opened`);
@@ -14,5 +14,5 @@ module.exports = {
         else{
             await message.reply(`Lumière : Closed`);
         }
-    }
+    }*/
 }

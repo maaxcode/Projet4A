@@ -4,12 +4,12 @@ const Simulation_Maison = require('../../Capteurs/Simulation_Maison.js')
 module.exports = {
     name: "lumière",
     category: "Contrôle Maison",
-    description: 'Contrôle les lumières de la maison (!help Lum pour plus d\'information)',
+    description: 'Contrôle les lumières de la maison (/help Lum pour plus d\'information)',
     description2: '!LumOn, !SwitchOn, !Allumer : allume la lumière \n !LumOff, !SwitchOff, !Etiendre : éteins la lumière',
     options:[
         {
             type: "string",
-            name: "ouverture/fermeture",
+            name: "ouverture_fermeture",
             description: "commande l'ouverture et la fermeture des volets",
             required: true
         }
