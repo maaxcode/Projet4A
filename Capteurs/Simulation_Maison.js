@@ -5,30 +5,41 @@ const Temperature = require('./Temperature.js');
 var Simulation_Maison = (function() {
 	var constructeur = function() {
 		var tempsalon = new Temperature(10,"salon");
+		var tempchambre = new Temperature(18,"chambre")
 		var voletsalon = new Volet(0,"salon");
-		var lumsalon = new Lumiere(false,"salon");
+		var lumsalon = new Lumiere(false,"salon")
+		let tabtemp = [tempsalon, tempchambre]
 
-		this.gettemp= function() {
-			console.log('Simulation_Maison.gettemp(): début')
-			console.log( "Température actuelle : " + tempsalon.ValueTemp)
-			console.log('Simulation_Maison.gettemp(): fin')
-
-			return tempsalon.ValueTemp;
+		this.getsizetabtemp = function()
+		{
+			return tabtemp.length
 		}
 
-		this.gettemp_com= function() {
-			console.log('Simulation_Maison.gettemp_com(): début')
-			console.log( "Température commandée : " + tempsalon.Value_com)
-			console.log('Simulation_Maison.gettemp_com(): fin')
+		this.getname = function(i){
+				return tabtemp[parseInt(i)].nom;
+		}
 
-			return tempsalon.Value_com;
+		this.gettemp= function(i) {
+			//console.log('Simulation_Maison.gettemp(): début')
+			console.log( "Température actuelle "+tabtemp[parseInt(i)].nom+": "+ tabtemp[parseInt(i)].ValueTemp)
+			//console.log('Simulation_Maison.gettemp(): fin')
+
+			return tabtemp[parseInt(i)].ValueTemp;
+		}
+
+		this.gettemp_com= function(i) {
+			//console.log('Simulation_Maison.gettemp_com(): début')
+			console.log( "Température commandée : " +tabtemp[parseInt(i)].nom+": "+ tabtemp[parseInt(i)].Value_com)
+			//console.log('Simulation_Maison.gettemp_com(): fin')
+
+			return tabtemp[parseInt(i)].Value_com;
 		}
 		
-		this.settemp= function(valeur_souhaitée) {
-			console.log('Simulation_Maison.settemp(): début')
-			tempsalon.Value_com = valeur_souhaitée
-			console.log('Température commandée :'+tempsalon.Value_com)
-			console.log('Simulation_Maison.settemp(): fin')
+		this.settemp= function(index,valeur_souhaitée) {
+			//console.log('Simulation_Maison.settemp(): début')
+			tabtemp[parseInt(index)].Value_com = valeur_souhaitée
+			console.log('Température commandée '+tabtemp[parseInt(index)].nom+": "+tabtemp[parseInt(index)].Value_com)
+			//console.log('Simulation_Maison.settemp(): fin')
 
 		}
 
@@ -41,10 +52,10 @@ var Simulation_Maison = (function() {
 		this.setlum=  function(value) {
 			//return 0 tout est ok, 1 deja allumé, 2 deja eteint
 			console.log("Dans le set lum de la simu maison");
-			if (value == 1){
+			if (value === 1){
 				lumsalon.On();}
 
-			if (value == 0){lumsalon.Off();}}
+			if (value === 0){lumsalon.Off();}}
 
 		this.getvolet= function() {
 			//console.log('Simulation_Maison.getvolet(): début')
@@ -61,32 +72,35 @@ var Simulation_Maison = (function() {
 		}
 
 		this.setvolet= function(isopen) {
-			console.log("Simulation_Maison.setvolet(): début");
-			voletsalon.commande = isopen 
+		//	console.log("Simulation_Maison.setvolet(): début");
+			voletsalon.commande = parseInt(isopen) 
 			console.log("Volet commande : " + voletsalon.commande);
-			console.log("Simulation_Maison.setvolet(): fin");
+			//console.log("Simulation_Maison.setvolet(): fin");
 		}	
 
 		this.actualiser_temp = function() {
 		
 			console.log('Simulation_Maison.actualiser_temp(): début')
-			temperature_actuelle  = Simulation_Maison.getInstance().gettemp()
-			temperature_commandée = Simulation_Maison.getInstance().gettemp_com()
+
+			for (i = 0; i < tabtemp.length; i++)
+			{
+			temperature_actuelle  = Simulation_Maison.getInstance().gettemp(i)
+			temperature_commandée = Simulation_Maison.getInstance().gettemp_com(i)
 		
 
 			if(temperature_commandée<temperature_actuelle)
 			{
-				tempsalon.ValueTemp=tempsalon.ValueTemp-1;
-				console.log("Temp_salon = " + tempsalon.ValueTemp);
+				tabtemp[parseInt(i)].ValueTemp=tabtemp[parseInt(i)].ValueTemp-1;
+				console.log("Temperature "+tabtemp[parseInt(i)].nom+": "+tabtemp[parseInt(i)].ValueTemp);
 
 			}
 
 			if(temperature_commandée>temperature_actuelle)
 			{
-				tempsalon.ValueTemp=tempsalon.ValueTemp+1;
-				console.log("Temp_salon = " + tempsalon.ValueTemp);
-
+				tabtemp[parseInt(i)].ValueTemp=tabtemp[parseInt(i)].ValueTemp+1;
+				console.log("Temperature "+tabtemp[parseInt(i)].nom+": "+tabtemp[parseInt(i)].ValueTemp);
 			}
+		}
 			console.log('Simulation_Maison.actualiser_temp(): fin')
 
 		}
@@ -96,18 +110,22 @@ var Simulation_Maison = (function() {
 			volet_actuel = Simulation_Maison.getInstance().getvolet()
 			volet_commandé = Simulation_Maison.getInstance().getvolet_com()
 
+
 			if(volet_commandé == 1 )
 			{
 				if(volet_actuel<0.9)
 				{
+
 					voletsalon.Ouverture=voletsalon.Ouverture+0.1
 				}
 			}
 
 			if(volet_commandé == 0)
 			{
+
 				if(volet_actuel>0.1)
 				{
+
 					voletsalon.Ouverture=voletsalon.Ouverture-0.1
 				}
 			}
@@ -126,7 +144,7 @@ var Simulation_Maison = (function() {
 	var instance = null;
 	return new function() {
 		this.getInstance = function() {
-			if (instance == null) {
+			if (instance === null) {
 				instance = new constructeur();
 				instance.constructeur = null;
 			}

@@ -12,10 +12,20 @@ routeur.use('/test',(req, res) => {
 
    //Get entrée volet et temp(valeur commandée)
 
-   routeur.get('/getcommandetemp',(req, res) => {
+   routeur.get('/getcommandetemp:index',(req, res) => {
+
+    if(req.params.index<(Simulation_Maison.getInstance().getsizetabtemp()))
+    {
+        Temperature_commandée = Simulation_Maison.getInstance().gettemp_com(req.params.index);
+        nom = Simulation_Maison.getInstance().getname(req.params.index)
+        res.status(200).json({nom,Temperature_commandée});
+
+    } else {
+        res.status(201).json({message : "index hors de portée"});
+
+    }
     
-    Temperature_commandée = Simulation_Maison.getInstance().gettemp_com();
-    res.status(200).json({Temperature_commandée});
+    
  });
  routeur.get('/getcommandevolet',(req, res) => {
     Volet_commande = Simulation_Maison.getInstance().getvolet_com();
@@ -25,10 +35,17 @@ routeur.use('/test',(req, res) => {
 
     //Get sortie lumiere volet et temp
 
- routeur.get('/getsortietemp',(req, res) => {
-    
-    Temperature_actuelle = Simulation_Maison.getInstance().gettemp();
-    res.status(200).json({Temperature_actuelle});
+ routeur.get('/getsortietemp:index',(req, res) => {
+    if(req.params.index<(Simulation_Maison.getInstance().getsizetabtemp()))
+    {
+    Temperature_actuelle = Simulation_Maison.getInstance().gettemp(req.params.index);
+    nom = Simulation_Maison.getInstance().getname(req.params.index)
+    res.status(200).json({nom,Temperature_actuelle});
+    }else
+    {
+        res.status(201).json({message : "index hors de portée"});
+
+    }
  });
  routeur.get('/getsortielum',(req, res) => {
     IsOn = Simulation_Maison.getInstance().getlum();
@@ -50,19 +67,22 @@ routeur.use('/test',(req, res) => {
 
 //Set entree lumiere temp et volet
 
- routeur.get('/setentreetemp:value',(req, res) => {
+ routeur.get('/setentreetemp:index,:value',(req, res) => {
 
     if(req.params.value<=25 && req.params.value>=15)
     {
-        Simulation_Maison.getInstance().settemp(req.params.value)
-        Temperature_commandée = Simulation_Maison.getInstance().gettemp_com()
-        Temperature_actuelle = Simulation_Maison.getInstance().gettemp()
+        Simulation_Maison.getInstance().settemp(req.params.index,req.params.value)
+        Temperature_commandée = Simulation_Maison.getInstance().gettemp_com(req.params.index)
+        Temperature_actuelle = Simulation_Maison.getInstance().gettemp(req.params.index)
+        nom = Simulation_Maison.getInstance().getname(req.params.index)
 
-        res.status(200).json({message : "Commande de température bien mise a jour !",Temperature_commandée, Temperature_actuelle});
+
+        res.status(200).json({message : "Commande de température bien mise a jour !",nom,Temperature_commandée, Temperature_actuelle});
     }else{
-        Temperature_commandée = Simulation_Maison.getInstance().gettemp_com()
-        Temperature_actuelle = Simulation_Maison.getInstance().gettemp() 
-        res.status(201).json({message : "Valeur incorrecte, entrez une valeur comprise entre 15 et 25 ", Temperature_commandée,Temperature_actuelle });
+        Temperature_commandée = Simulation_Maison.getInstance().gettemp_com(req.params.index)
+        Temperature_actuelle = Simulation_Maison.getInstance().gettemp(req.params.index) 
+        nom = Simulation_Maison.getInstance().getname(req.params.index)
+        res.status(201).json({message : "Valeur incorrecte, entrez une valeur comprise entre 15 et 25 ",nom, Temperature_commandée,Temperature_actuelle });
 
     }
  
