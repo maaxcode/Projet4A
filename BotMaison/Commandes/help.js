@@ -1,15 +1,17 @@
 const Discord= require("discord.js")
 const Simulation_Maison = require('../../Capteurs/Simulation_Maison.js')
+///const Commandes = require('./Commandes.js')
 
 module.exports = {
     name: "help",
     category: "Information",
     description: "Aide pour les commandes du bot",
+    options_possibles: `nom de commande, pour avoir plus d'information sur une commande en particulier`,
     options: [
         {
             type: "string",
             name: "commande",
-            description: "la commande pour laquelle on veut de l'aide",
+            description: `Nom de la commande pour laquelle vous voulez de l'aide`,
             required: false
         }
     ],
@@ -32,7 +34,7 @@ module.exports = {
             .setColor("#0080FF")
             .setTitle(`Commandes du bot`)
             .setThumbnail(bot.user.displayAvatarURL({dynamic: true}))
-            .setDescription(`Commandes disponibles : \`${bot.commands.size}\`\nCatégories disponibles : \`${categories.length}\``)
+            .setDescription(`Commandes disponibles : \`${bot.commands.size}\`\nCatégories disponibles : \`${categories.length}\`\nTapez \"/help\" + \"le nom d'une commande\" pour avoir plus d'information sur cette commande`)
             .setTimestamp()
             .setFooter({text: "Commandes du bot"})
 
@@ -45,11 +47,12 @@ module.exports = {
         }
 
         else {
+
             let Embed = new Discord.EmbedBuilder()
             .setColor("#0080FF")
             .setTitle(`Commandes ${command.name}`)
             .setThumbnail(bot.user.displayAvatarURL({dynamic: true}))
-            .setDescription(`Nom : \`${command.name}\`\nDescription : \`${command.description}\`\nCategorie : \`${command.category}\``)
+            .setDescription(`Nom : \`${command.name}\`\nDescription : \`${command.description}\`\nCategorie : \`${command.category}\`\nOptions : \`${command.options_possibles}\``)
             .setTimestamp()
             .setFooter({text: "Commandes du bot"})
 
