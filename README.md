@@ -5,17 +5,17 @@ Notre projet consiste à simuler les entrées et sorties d'une maison et de pouv
 
 ## Installation
 - Pour commencer il va falloir cloner le projet sur votre machine :
-	- Avec git
+	- Avec git  
 	```git clone https://github.com/maaxcode/Projet4A.git /dossier_réception```
-	- Sans git 
+	- Sans git  
 		```
 			 wget https://github.com/maaxcode/Projet4A/archive/main.zip
 		     unzip main.sip
 		     cd aurl
-- Il va ensuite falloir installer les dépendances dont le projet a besoin
+- Il va ensuite falloir installer les dépendances dont le projet a besoin  
 	```npm install```
 	
-- Puis installer nodemon qui permettra de lancer le serveur automatique a chaque changement dans le code :
+- Puis installer nodemon qui permettra de lancer le serveur automatique a chaque changement dans le code :  
 	```npm install -g nodemon```
 
 ## Configuration
@@ -26,7 +26,7 @@ Notre projet consiste à simuler les entrées et sorties d'une maison et de pouv
 	- **BOT_DISCORD_ON** : Si vous souhaitez activer le bot discord afin d'avoir accès a l'API web et le démarage du bot . "true" pour le démarer , "false" pour n'avoir que le serveur domatique et l'API web.
 
 ## Start le projet
- - Pour lancer le serveur , placer vous dans le dossier du projet dans un cmd
+ - Pour lancer le serveur , placer vous dans le dossier du projet dans un cmd  
 	```nodemon maison_bot.js```
 
 ##  Utiliser le projet
@@ -61,5 +61,4 @@ Vous allez normalement obtenir une page avec un message JSON disant : "Votre req
 
 - Dans un premier temps , il faut avoir créer son propre serveur discord, ou disposer des droits d'administrateur.
 - Avoir créer son bot discord et récupérer son token afin de lier le code au bot(*cf partie config*)
-
 
