@@ -7,7 +7,7 @@ Notre projet consiste à simuler les entrées et sorties d'une maison et de pouv
 - Pour commencer il va falloir cloner le projet sur votre machine :
 	- Avec git
 	```git clone https://github.com/maaxcode/Projet4A.git /dossier_réception```
-	-Sans git 
+	- Sans git 
 		```
 			 wget https://github.com/maaxcode/Projet4A/archive/main.zip
 		     unzip main.sip
@@ -58,5 +58,8 @@ Vous allez normalement obtenir une page avec un message JSON disant : "Votre req
 ***A noter qu'il ne faut pas écrire les ":" dans les requêtes c'est simplement pour l'utilisation interne du code qui permet de récupérer le paramètre .***
 
 ### Avec discord 
+
+- Dans un premier temps , il faut avoir créer son propre serveur discord, ou disposer des droits d'administrateur.
+- Avoir créer son bot discord et récupérer son token afin de lier le code au bot(*cf partie config*)
 
 
