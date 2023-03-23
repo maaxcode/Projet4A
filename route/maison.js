@@ -60,10 +60,10 @@ routeur.use('/test',(req, res) => {
     {
     res.status(200).json({message : "Volets ouverts !", Ouverture_actuelle});}  
 
-    if(Math.round(Ouverture_actuelle)==0)
+    else if(Math.round(Ouverture_actuelle)==0)
     {
         res.status(200).json({message : "Volets fermés !", Ouverture_actuelle});}
-    });
+    })
 
 //Set entree lumiere temp et volet
 
@@ -98,7 +98,7 @@ routeur.use('/test',(req, res) => {
         res.status(200).json({message : "Commande des volet bien mise a jour !", Volet_commande,Ouverture_actuelle});
     
     }else{
-        res.status(201).json({message : "Erreur ,la valeur doit etre 1 ou 0 pour deamander à ouvrir ou fermer les volets"});
+        res.status(201).json({message : "Erreur ,la valeur doit etre 1 ou 0 pour demander à ouvrir ou fermer les volets"});
 
     }
  });

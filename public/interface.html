@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Panneau de configuration</title>
+</head>
+<body>
+	<h1>Contrôle maison</h1>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="../route/maison.js"></script>
+	
+	<!-- Catégorie Lumière -->
+	<div>
+		<h2>Lumière</h2>
+		<label id="lumiere">État : </label>
+		<br>
+		<button id="boutton_lum">Allumer / Éteindre</button>
+	</div>
+
+	<!-- Catégorie Température -->
+	<div>
+		<h2>Température</h2>
+		<label id="consignetemp_salon">Température consigne actuelle(salon) : </label>
+		<br>
+		<label id="tempactuelle_salon">Température actuelle(salon) :</label>
+		<br>
+		<label>Température consigne souhaitée(salon) : </label>
+		<input type="number" id="temp_souhaitée_salon" value="">
+		<br>
+		<button id="boutton_salon">Envoyer la consigne </button>
+		<br><br>
+		<label id="consignetemp_chambre">Température consigne actuelle(chambre) : </label>
+		<br>
+		<label id="tempactuelle_chambre">Température actuelle(chambre) :</label>
+		<br>
+		<label>Température consigne souhaitée(chambre) : </label>
+		<input type="number" id="temp_souhaitée_chambre"  value="">
+		<br>
+		<button id="boutton_chambre">Envoyer la consigne</button>
+
+	</div>
+
+	<div>
+	<h2>Volet</h2>
+	<label id="ouverture_volet">Ouverture: </label>
+	<br>
+	<label id="commande_volet">Commande actuelle : </label>
+	<br>
+	<button id="boutton_volet_o">Ouvrir </button>
+	<button id="boutton_volet_f">Fermer</button>
+
+	</div>
+
+<script src="./Actu_web.js"></script>
+
+
+	
+
+</body>
+</html>

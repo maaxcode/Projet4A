@@ -6,5 +6,6 @@ const app = express();
 
 app.use('/api', maisonroutes);
 
+app.use(express.static("./public"));
 
 module.exports = app;

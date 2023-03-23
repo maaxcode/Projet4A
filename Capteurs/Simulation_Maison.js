@@ -7,7 +7,7 @@ var Simulation_Maison = (function() {
 		var tempsalon = new Temperature(10,"salon");
 		var tempchambre = new Temperature(18,"chambre")
 		var voletsalon = new Volet(0,"salon");
-		var lumsalon = new Lumiere(false,"salon")
+		var lumsalon = new Lumiere(true,"salon")
 		let tabtemp = [tempsalon, tempchambre]
 
 		this.getsizetabtemp = function()
@@ -32,7 +32,7 @@ var Simulation_Maison = (function() {
 			console.log( "Température commandée : " +tabtemp[parseInt(i)].nom+": "+ tabtemp[parseInt(i)].Value_com)
 			//console.log('Simulation_Maison.gettemp_com(): fin')
 
-			return tabtemp[parseInt(i)].Value_com;
+			return parseInt(tabtemp[parseInt(i)].Value_com);
 		}
 		
 		this.settemp= function(index,valeur_souhaitée) {
@@ -52,10 +52,10 @@ var Simulation_Maison = (function() {
 		this.setlum=  function(value) {
 			//return 0 tout est ok, 1 deja allumé, 2 deja eteint
 			console.log("Dans le set lum de la simu maison");
-			if (value === 1){
+			if (value == 1){
 				lumsalon.On();}
 
-			if (value === 0){lumsalon.Off();}}
+			if (value == 0){lumsalon.Off();}}
 
 		this.getvolet= function() {
 			//console.log('Simulation_Maison.getvolet(): début')
@@ -117,6 +117,10 @@ var Simulation_Maison = (function() {
 				{
 
 					voletsalon.Ouverture=voletsalon.Ouverture+0.1
+					if(voletsalon.Ouverture>0.9)
+					{
+						voletsalon.Ouverture = 1
+					}
 				}
 			}
 
@@ -127,6 +131,10 @@ var Simulation_Maison = (function() {
 				{
 
 					voletsalon.Ouverture=voletsalon.Ouverture-0.1
+					if(voletsalon.Ouverture<0.1)
+					{
+						voletsalon.Ouverture = 0
+					}
 				}
 			}
 			console.log('Simulation_Maison.actualiser_volet(): fin')
@@ -135,7 +143,7 @@ var Simulation_Maison = (function() {
 		this.Start = function(){
 
 			setInterval(this.actualiser_temp, 10000)
-			//setInterval(this.actualiser_volet,1000)
+			setInterval(this.actualiser_volet,1000)
 
 		}
 		
