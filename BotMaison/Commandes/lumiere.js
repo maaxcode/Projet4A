@@ -12,19 +12,36 @@ module.exports = {
             type: "integer",
             name: "allumer_éteindre",
             description: "commande la lumière",
-            required: true
+            required: false
         }
     ],
 
     async run(bot, message, args) {
-        let descision = args.get("allumer_éteindre").value
-        Simulation_Maison.getInstance().setlum(descision)
-        if(descision===1){
-            message.reply(`La lumière est allumée`)
+        let descision;
+        if(args.get("allumer_éteindre")){
+            descision = args.get("allumer_éteindre").value
         }
-        else if(descision===0){
-            message.reply(`La lumière est éteinte`)
+        
+        if(!descision && descision !== 0){
+            let etat_lum=Simulation_Maison.getInstance().getlum()
+            if(etat_lum===true){
+                message.reply(`La lumière est actuellement allumée`)
+            }
+            else if(etat_lum=== false){
+                message.reply(`La lumière est actuellement éteinte`)
+            }
+            else{ message.reply(`Il y a un problème avec la lumière, peut-être une ampoule grillée ?`)}
         }
-        else message.reply(`Valeur incorrect, /help lumiere pour de l'aide`)
+        else {
+            Simulation_Maison.getInstance().setlum(descision)
+            if(descision===1){
+                message.reply(`La lumière est allumée`)
+            }
+            else if(descision===0){
+                message.reply(`La lumière est éteinte`)
+            }
+            else message.reply(`Valeur incorrect, /help lumiere pour de l'aide`)
+        }
+        
     }
 }
