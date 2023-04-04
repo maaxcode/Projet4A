@@ -12,7 +12,8 @@ module.exports = {
             type: "integer",
             name: "allumer_éteindre",
             description: "commande la lumière",
-            required: false
+            required: false,
+            autocomplete: false
         }
     ],
 

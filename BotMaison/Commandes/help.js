@@ -1,6 +1,5 @@
 const Discord= require("discord.js")
 const Simulation_Maison = require('../../Capteurs/Simulation_Maison.js')
-///const Commandes = require('./Commandes.js')
 
 module.exports = {
     name: "help",
@@ -12,7 +11,8 @@ module.exports = {
             type: "string",
             name: "commande",
             description: `Nom de la commande pour laquelle vous voulez de l'aide`,
-            required: false
+            required: false,
+            autocomplete: true
         }
     ],
 

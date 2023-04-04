@@ -11,7 +11,8 @@ module.exports = {
             type: "integer",
             name: "ouverture_fermeture",
             description: "Commande l'ouverture ou la fermeture des volets",
-            required: false
+            required: false,
+            autocomplete: false
         }
     ],
 

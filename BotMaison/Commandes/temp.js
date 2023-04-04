@@ -11,13 +11,15 @@ module.exports = {
             type: "string",
             name: "piece",
             description: "Piece de la maison",
-            required: false
+            required: false,
+            autocomplete: true
         },
         {
             type: "integer",
             name: "température",
             description: "Valeur souhaitée en degré celsius",
-            required: false
+            required: false,
+            autocomplete: false
         }        
     ],
 
