@@ -24,6 +24,7 @@ Notre projet consiste à simuler les entrées et sorties d'une maison et de pouv
 	- **NODE_ENV** : a completer par "development" ou "production"
 	- **PORT** : Le port que vous souhaitez utiliser pour l'interface web
 	- **BOT_DISCORD_ON** : Si vous souhaitez activer le bot discord afin d'avoir accès a l'API web et le démarage du bot . "true" pour le démarer , "false" pour n'avoir que le serveur domatique et l'API web.
+- Une fois le fichier .env.example créé, il vous suffit de le renommer avec une estension ".env" afin qu'il soit prit en compte par la librairie dotenv
 
 ## Start le projet
  - Pour lancer le serveur , placer vous dans le dossier du projet dans un cmd  
