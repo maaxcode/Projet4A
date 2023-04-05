@@ -62,4 +62,5 @@ Vous allez normalement obtenir une page avec un message JSON disant : "Votre req
 
 - Dans un premier temps , il faut avoir créer son propre serveur discord, ou disposer des droits d'administrateur.
 - Avoir créer son bot discord et récupérer son token afin de lier le code au bot(*cf partie config*)
+- Vous pouvez maintenant utiliser le bot discord en entrant les commandes suivantes :
 

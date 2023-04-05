@@ -29,7 +29,7 @@ module.exports = {
         if(args.getString("piece")){
             piece = args.getString("piece");
             if(piece != "salon" && piece != "chambre"){
-                message.reply("le nom de la pièce est incorrect, /help temp pour de l'aide")
+                message.reply("Le nom de la pièce est incorrect, /help temp pour de l'aide")
             }
         }
         if(args.get("température")){
@@ -39,20 +39,17 @@ module.exports = {
         if(!piece && !descision){ //pas d'option a la commande -> renvoie la temp des deux pieces
             let temp_salon = Simulation_Maison.getInstance().gettemp(0)
             let temp_chambre = Simulation_Maison.getInstance().gettemp(1)
-            //console.log(temp_salon)
             message.reply("Il fait " + temp_salon + "°C dans le salon et "+ temp_chambre+ "°C dans la chambre")
         }
         else if(piece && !descision){ //seulement l'option du nom de la piece -> renvoie la temp de cette piece
             if(piece == "salon"){
                 let temp_salon = Simulation_Maison.getInstance().gettemp(0)
-                //console.log("SALON :", temp_salon)
                 message.reply("Il fait "+ temp_salon+"°C dans le salon")
             }
             else if(piece == "chambre"){
                 let temp_chambre = Simulation_Maison.getInstance().gettemp(1)
                 message.reply("Il fait "+ temp_chambre+"°C dans la chambre")
             }
-            else { message.reply("Le nom de la piece est incorrect, /help temp pour de l'aide")}
         }
         else if(piece && descision){//les deux options sont données -> set la temp de la piece voulue à la temp donnée
             if(descision >=10 && descision <=30 ){
@@ -78,7 +75,6 @@ module.exports = {
                     }
                     else message.reply(`Il fait déjà `+ descision + `°C dans la chambre`)
                 }
-                else { message.reply("Le nom de la piece est incorrect, /help temp pour de l'aide")}
                 
             }
             else message.reply(`Valeur incorrecte, /help temp pour de l'aide`)
@@ -93,5 +89,3 @@ module.exports = {
         }      
     }
 }
-
-//salon==0 chambre==1
