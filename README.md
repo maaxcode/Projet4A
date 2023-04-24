@@ -34,7 +34,7 @@ Notre projet consiste à simuler les entrées et sorties d'une maison et de pouv
 
 ### Avec l'API web
 - Ouvrir un navigateur web et se connecter a l'adresse suivante :    
-> localhost:4200/api/test
+> localhost:port/api/test
 
 Vous allez normalement obtenir une page avec un message JSON disant : "Votre requête a bien été reçue !"
 
@@ -55,6 +55,9 @@ Vous allez normalement obtenir une page avec un message JSON disant : "Votre req
 	 - ```/setentreevolet:value```: permet de commander l'ouverture ou la fermeture du volet(0 pour la fermeture, 1 pour l'ouverture)
 	 
 	 - ```/setentreelum:value```:permet de commander l'état de la lampe(1 pour l'allumer,0 pour l'éteindre)
+
+- Si vous préféere avoir une vu d'ensemble, vous pouvez utiliser l'interface web que nous avons conçu en vous rendant a l'adresse : 
+> localhost:port/interface.html
 
 ***A noter qu'il ne faut pas écrire les ":" dans les requêtes c'est simplement pour l'utilisation interne du code qui permet de récupérer le paramètre .***
 
