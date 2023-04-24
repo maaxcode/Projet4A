@@ -4,7 +4,7 @@ const Temperature = require('./Temperature.js');
 
 var Simulation_Maison = (function() {
 	var constructeur = function() {
-		var tempsalon = new Temperature(10,"salon");
+		var tempsalon = new Temperature(15,"salon");
 		var tempchambre = new Temperature(18,"chambre")
 		var voletsalon = new Volet(0,"salon");
 		var lumsalon = new Lumiere(true,"salon")
