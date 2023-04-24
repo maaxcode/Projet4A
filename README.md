@@ -67,3 +67,7 @@ Vous allez normalement obtenir une page avec un message JSON disant : "Votre req
 - Avoir créer son bot discord et récupérer son token afin de lier le code au bot(*cf partie config*)
 - Vous pouvez maintenant utiliser le bot discord en entrant les commandes suivantes :
 
+	- /volet : permet de controler l'ouverture des volets de la maison
+	- /lumiere : permet de controler l'état des lumières
+	- /temp : permet de controler la température dans chacune des pièces disponibles
+	- /help : pour toutes informations supplémentaire pour les arguments de chaque commade ou leur utilisation
